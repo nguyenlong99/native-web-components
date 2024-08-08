@@ -1,0 +1,8 @@
+form {
+  margin-top: 24px;
+}
+.form-input {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
