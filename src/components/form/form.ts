@@ -1,18 +1,13 @@
-import styles from "./form.module.css";
-
 class UIKitForm extends HTMLElement {
   private form: HTMLFormElement | undefined | null;
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   static get observedAttributes() {
     return ["required", "value"];
   }
-
-  private _attrs = {};
 
   connectedCallback() {
     this.render();
@@ -20,7 +15,6 @@ class UIKitForm extends HTMLElement {
     if (!this.form) {
       return;
     }
-    console.log("this.form: ", this.form);
     this.form.addEventListener("submit", this.handleSubmit.bind(this));
   }
 
@@ -38,22 +32,22 @@ class UIKitForm extends HTMLElement {
   }
 
   set submitCallback(callback: ((data: Record<string, any>) => void) | null) {
-    console.log("set submitcallback", callback);
     this._submitCallback = callback;
   }
 
   handleSubmit(event: Event) {
-    console.log("handleSubmit");
     event.preventDefault();
 
     // Get the callback function from the attribute or property
     // const submitCallback = (this as any).submitCallback;
-    console.log("typeof this._submitCallback: ", typeof this._submitCallback);
-    if (typeof this._submitCallback === "function") {
-      const formData = new FormData(this.form!);
-      const data = Object.fromEntries(formData.entries());
-      this._submitCallback(data);
+    console.log("event: ", event);
+    if (typeof this._submitCallback !== "function") {
+      return;
     }
+
+    const formData = new FormData(this.form!);
+    const data = Object.fromEntries(formData.entries());
+    this._submitCallback(data);
   }
 
   render() {
@@ -71,19 +65,20 @@ class UIKitForm extends HTMLElement {
       </style>
       <form id="form-search-image">
 				<div class="form-input">
-					<label for="input-name">Search: </label>
+					<label for="search">Search: </label>
 					<uikit-input
 						type="text"
-						id="input-name"
-						name="input-name"
+						id="search"
+						name="search"
 						required
+            value=""
 						minlength="4"
 						maxlength="12"
 						placeholder="input to search"
 					></uikit-input>
 				</div>
-        
-        <button id="submit-button" type="submit">Submit button</button>
+        <uikit-button id="submit-button" type="submit" text="Submit button">
+        </uikit-button>
       </form>
     `;
   }

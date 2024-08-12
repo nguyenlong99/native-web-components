@@ -3,10 +3,13 @@ class UIKitButton extends HTMLElement {
   private text: string | null = "";
   private buttonId: string | null = "";
   private type: string | null = "";
+  // private _internals: ElementInternals;
+  // static formAssociated = true;
 
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    // this.attachShadow({ mode: "open" });
+    // this._internals = this.attachInternals();
   }
 
   connectedCallback() {
@@ -18,20 +21,24 @@ class UIKitButton extends HTMLElement {
     this.buttonId = this.getAttribute("id");
     this.type = this.getAttribute("type") ?? "submit";
 
-    // if (typeof callback === "function") {
-    //   this.shadowRoot
-    //     .querySelector(`#${this.buttonId}`)
-    //     .addEventListener("click", callback);
-    // }
     this.render();
+
+    // const button = this.shadowRoot?.querySelector(
+    //   `button#${this.buttonId}`
+    // ) as HTMLButtonElement;
+    // this._internals.form?.requestSubmit(button!);
   }
 
   attributeChangedCallback(name: any, oldValue: any, newValue: any) {}
 
   render() {
-    this.shadowRoot!.innerHTML = `
-        <button id="${this.buttonId}" type="${this.type}" form="form-search-image">${this.text}</button>
+    this.innerHTML = `
+        <button id="${this.buttonId}" type="${this.type}">${this.text}</button>
         `;
+
+    // this.shadowRoot!.innerHTML = `
+    //     <button id="${this.buttonId}" type="${this.type}">${this.text}</button>
+    //     `;
   }
 }
 

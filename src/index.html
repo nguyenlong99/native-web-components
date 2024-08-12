@@ -8,49 +8,32 @@
   </head>
   <body>
     <uikit-form></uikit-form>
+    <uikit-list></uikit-list>
+    <!-- <form id="my-form">
+      <label for="input">My Input</label>
+      <my-input id="input" name="myInput" required></my-input>
+      <button>Submit</button>
+    </form> -->
 
-    <form id="form">
-      <div class="form-wrapper">
-        <label for="input-name-1">Search: </label>
-        <!-- <uikit-input
-          type="text"
-          id="input-name"
-          name="input-name"
-          required
-          minlength="4"
-          maxlength="12"
-          placeholder="input to search"
-        ></uikit-input> -->
-        <input
-          type="text"
-          id="input-name-1"
-          name="input-name-1"
-          required
-          minlength="4"
-          maxlength="12"
-          placeholder="input to search"
-        />
-      </div>
-      <!-- <uikit-button
-        text="Submit button"
-        type="submit"
-        id="submit-button"
-      ></uikit-button> -->
-      <button id="submit-button-1" type="submit">Submit button</button>
-    </form>
-    <p id="log"></p>
+    <!-- <form id="test-form">
+      <p>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="johanna" />
+      </p>
+
+      <cus-tom11></cus-tom11>
+
+      <button type="submit">Send</button>
+    </form> -->
 
     <script type="module">
-      function logSubmit(event) {
-        event.preventDefault();
-        console.log(event);
-        log.textContent = `Form Submitted! Timestamp: ${event}`;
-      }
-
-      const form = document.getElementById("form");
-      console.log(form);
-      const log = document.getElementById("log");
-      form.addEventListener("submit", logSubmit);
+      // const form1 = document.getElementById("my-form");
+      // console.log("form1: ", form1);
+      // form1.addEventListener("submit", (e) => {
+      //   e.preventDefault();
+      //   const formData = new FormData(e.target);
+      //   console.log(`My Input Value - '${formData.get("myInput")}'`);
+      // });
     </script>
   </body>
 </html>
