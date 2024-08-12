@@ -2,8 +2,6 @@ export default class EventHandler {
   static events: Record<string, any> = {};
 
   static subscribeToEvent(event: any, elem: any) {
-    console.log("subscribeToEvent: ", this.events, event, elem);
-
     if (!EventHandler.events[event]) {
       EventHandler.events[event] = [];
     }
@@ -11,8 +9,6 @@ export default class EventHandler {
   }
 
   static triggerEvent(event: any, params: any) {
-    console.log("triggerEvent: ", this.events);
-
     if (!EventHandler.events[event]) return;
     EventHandler.events[event].forEach((elem: any) => {
       if (elem.handleEvent) {

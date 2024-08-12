@@ -3,6 +3,7 @@ class UIKitButton extends HTMLElement {
   private text: string | null = "";
   private buttonId: string | null = "";
   private type: string | null = "";
+  private form: string | null = "";
   // private _internals: ElementInternals;
   // static formAssociated = true;
 
@@ -13,23 +14,24 @@ class UIKitButton extends HTMLElement {
   }
 
   connectedCallback() {
-    /**
-     * It is called each time when the custom element is appended to the DOM
-     */
-
     this.text = this.getAttribute("text");
     this.buttonId = this.getAttribute("id");
+    this.form = this.getAttribute("form");
     this.type = this.getAttribute("type") ?? "submit";
 
     this.render();
 
-    // const button = this.shadowRoot?.querySelector(
-    //   `button#${this.buttonId}`
-    // ) as HTMLButtonElement;
+    const button = this.shadowRoot?.querySelector(
+      `button#${this.buttonId}`
+    ) as HTMLButtonElement;
+    // button.setAttribute("form", "form-search-image");
+    // button.addEventListener("click", (e) => {
+    //   e.preventDefault();
+    //   // this._internals.form?.requestSubmit(button!);
+    //   this._internals.form!.submit();
+    // });
     // this._internals.form?.requestSubmit(button!);
   }
-
-  attributeChangedCallback(name: any, oldValue: any, newValue: any) {}
 
   render() {
     this.innerHTML = `
@@ -37,7 +39,7 @@ class UIKitButton extends HTMLElement {
         `;
 
     // this.shadowRoot!.innerHTML = `
-    //     <button id="${this.buttonId}" type="${this.type}">${this.text}</button>
+    //     <button id="${this.buttonId}" type="${this.type}" form="${this.form}">${this.text}</button>
     //     `;
   }
 }

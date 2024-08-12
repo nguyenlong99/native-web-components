@@ -5,35 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dev Card Web Component</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <uikit-form></uikit-form>
-    <uikit-list></uikit-list>
-    <!-- <form id="my-form">
-      <label for="input">My Input</label>
-      <my-input id="input" name="myInput" required></my-input>
-      <button>Submit</button>
-    </form> -->
+    <h3>List images</h3>
 
-    <!-- <form id="test-form">
-      <p>
+    <uikit-form></uikit-form>
+
+    <uikit-list></uikit-list>
+
+    <h3>Test submit form by hitting Enter</h3>
+    <form id="test-form">
+      <div>
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="johanna" />
-      </p>
+        <input type="text" name="name" id="name" value="" />
+      </div>
 
       <cus-tom11></cus-tom11>
 
       <button type="submit">Send</button>
-    </form> -->
+    </form>
+
+    <h3>Style encapsulation</h3>
+    <button>Second submit button</button>
 
     <script type="module">
-      // const form1 = document.getElementById("my-form");
-      // console.log("form1: ", form1);
-      // form1.addEventListener("submit", (e) => {
-      //   e.preventDefault();
-      //   const formData = new FormData(e.target);
-      //   console.log(`My Input Value - '${formData.get("myInput")}'`);
-      // });
+      const form1 = document.getElementById("test-form");
+      form1.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log(e);
+        const formData = new FormData(e.target);
+        console.log(`My Input Value - '${formData.get("name")}'`);
+      });
     </script>
   </body>
 </html>

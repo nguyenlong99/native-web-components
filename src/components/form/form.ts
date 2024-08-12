@@ -40,7 +40,6 @@ class UIKitForm extends HTMLElement {
 
     // Get the callback function from the attribute or property
     // const submitCallback = (this as any).submitCallback;
-    console.log("event: ", event);
     if (typeof this._submitCallback !== "function") {
       return;
     }
@@ -77,7 +76,7 @@ class UIKitForm extends HTMLElement {
 						placeholder="input to search"
 					></uikit-input>
 				</div>
-        <uikit-button id="submit-button" type="submit" text="Submit button">
+        <uikit-button id="submit-button" type="submit" form="form-search-image" text="Submit button">
         </uikit-button>
       </form>
     `;

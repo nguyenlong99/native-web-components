@@ -30,7 +30,6 @@ class UIKitInput extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log(this._internals.form);
     this.type = this.getAttribute("type");
     this.elementId = this.getAttribute("id");
     this.name = this.getAttribute("name");
@@ -53,7 +52,6 @@ class UIKitInput extends HTMLElement {
   }
 
   attributeChangedCallback(name: any, _prev: any, next: any) {
-    console.log("attributeChangedCallback: ", name, _prev, next);
     this._attrs[name] = next;
     // this.setProps();
   }

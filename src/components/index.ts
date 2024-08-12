@@ -15,13 +15,11 @@ customElements.define("cus-tom11", Custom11);
 customElements.define("my-input", MyInput);
 
 function handleFormSubmit(formData: any) {
-  console.log("Form Submitted:", formData);
   fetch(
     `https://pixabay.com/api/?key=45330144-79655dc881a87484a9145611d&q=${formData.search}`
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.hits.slice(0, 5));
       EventHandler.triggerEvent("list-images", data.hits.slice(0, 5));
     });
 }
